@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#120b06">
+  <meta name="description" content="SESIVERSO 2026 — Caverna do Tempo 360°">
+  <title>Caverna do Tempo 360° — SESIVERSO</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css?v=9">
+</head>
+<body>
+<section id="intro" class="screen show">
+  <div class="intro-bg"></div><div class="intro-shade"></div>
+  <div class="intro-card">
+    <div class="brand-mark">✋</div>
+    <div class="eyebrow">SESIVERSO 2026 • PRÉ-HISTÓRIA</div>
+    <h1>Caverna do Tempo <span>360°</span></h1>
+    <p>Explore uma caverna virtual como em um jogo. Caminhe por nove ambientes, observe pinturas rupestres, abra fichas arqueológicas e explore as galerias como em um jogo educativo.</p>
+    <div class="row"><button id="enter" class="primary">🔥 Iniciar expedição</button><button id="how" class="ghost">ℹ️ Como funciona</button></div>
+    <small>Reconstrução educativa inspirada em repertórios arqueológicos reais.</small>
+  </div>
+</section>
+
+<main id="game" class="screen">
+  <div id="viewer">
+    <div id="track"><img class="pano"><img class="pano"><img class="pano"></div>
+    <div id="hotspots"></div><div id="torch"></div><div class="vignette"></div>
+    <div class="torch-prop" aria-hidden="true"><span class="flame">🔥</span><span class="handle"></span></div>
+    <div id="moveHint">W/S ou ↑/↓ para caminhar • A/D ou ←/→ para olhar • arraste no celular</div>
+    <div id="transition" class="hidden"><div class="loader"></div><b id="transitionText">Avançando...</b></div>
+  </div>
+
+  <div class="hud-brand">
+    <div class="brand-icon">✋</div>
+    <div><strong>CAVERNA DO TEMPO 360°</strong><small>ARTE RUPESTRE E A HISTÓRIA DA HUMANIDADE</small></div>
+  </div>
+
+  <nav class="top-menu">
+    <button id="mapBtn">🗺️ <span>Mapa</span></button>
+    <button id="journalBtn">📓 <span>Caderno</span></button>
+    <button id="timelineBtn">◷ <span>Linha do Tempo</span></button>
+    <button id="quizTopBtn">❓ <span>Quiz</span></button>
+    <button id="drawBtn">🎨 <span>Desenhar</span></button>
+  </nav>
+
+  <div class="top-tools">
+    <button id="torchBtn">🔥 <span>Tocha</span></button>
+    <button id="soundBtn">🔊 <span>Som</span></button>
+    <button id="installBtn" class="hidden">⬇ Instalar</button>
+    <button id="helpBtn">⚙</button>
+  </div>
+
+  <section id="leftMap" class="map-card">
+    <h2>MAPA DA CAVERNA</h2>
+    <div class="map-canvas">
+      <svg viewBox="0 0 280 345" aria-hidden="true">
+        <defs><filter id="shadow"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity=".35"/></filter></defs>
+        <path class="cave-shape" d="M30 314 C18 286 34 257 58 243 C78 231 95 236 111 218 C126 201 123 178 143 160 C160 145 180 148 194 131 C208 114 208 93 225 78 C240 64 255 71 261 89 C268 112 252 128 233 141 C214 154 205 172 211 192 C219 217 201 236 178 239 C155 241 143 221 124 232 C105 243 109 269 91 286 C73 304 51 330 30 314Z"/>
+        <path class="route" d="M45 297 C59 274 70 264 85 252 C104 238 117 230 126 218 C140 200 141 186 157 171 C173 157 190 157 201 143 C214 127 214 110 229 96 C242 84 252 87 254 98 C256 113 245 125 231 134 C210 147 195 159 195 181 C195 204 179 216 161 218 C142 220 130 208 116 218 C99 231 103 252 88 265 C74 278 62 291 45 297"/>
+      </svg>
+      <div id="mapNodes"></div>
+    </div>
+    <div class="map-progress"><b>PROGRESSO DA EXPLORAÇÃO</b><div class="progress-line"><i id="mapProgress"></i></div><div><span id="mapVisited">1/9</span><span>🪨 Evidências: <b id="mapEvidence">0/18</b></span></div></div>
+  </section>
+
+
+  <div class="walk-pad">
+    <button data-key="w"><b>W</b><small>avançar</small></button><button data-key="a"><b>A</b></button><button data-key="s"><b>S</b><small>voltar</small></button><button data-key="d"><b>D</b></button>
+  </div>
+  <div class="compass"><span id="needle">▲</span><small id="heading">0°</small></div>
+
+  <section class="scene-rail"><button id="prevScene" class="rail-arrow">‹</button><div id="sceneRail" class="rail-items"></div><button id="nextScene" class="rail-arrow">›</button></section>
+</main>
+
+<aside id="infoPanel" class="panel">
+  <button class="x" id="closePanel">×</button>
+  <div class="panel-head"><div id="evIcon" class="ev-icon">🖐️</div><div><h2 id="evTitle">Cena arqueológica</h2><span id="evPeriod" class="pill">Arte rupestre</span></div></div>
+  <div id="panelHero" class="panel-hero"></div>
+  <p id="evIntro"></p>
+  <div id="tech" class="tech-grid"></div>
+  <h3>Descrição arqueológica</h3><p id="evAnalysis" class="box"></p>
+  <h3>O que esta imagem ajuda a compreender?</h3><p id="evMeaning" class="box"></p>
+  <h3>Reconstrução x referência real</h3><div id="compare" class="compare"></div>
+  <div class="panel-actions"><button id="narrateBtn">🔊 Ouvir explicação</button><button id="zoomBtn">🔎 Ampliar</button></div>
+  <h3>Teste rápido</h3><div id="miniQuiz"></div>
+  <button id="registerBtn" class="primary full">Responder ao teste para registrar</button>
+</aside>
+
+<div id="modal" class="modal hidden"><div class="modal-card"><button class="x" id="modalClose">×</button><div id="modalBody"></div></div></div>
+<div id="atelier" class="modal hidden"><div class="atelier-card"><button class="x" id="atelierClose">×</button><h2>🎨 Agora é sua vez de deixar uma marca</h2><p>Use pigmentos, traços e símbolos inspirados em técnicas rupestres.</p><div class="atelier-tools"><button data-tool="brush" class="active">✏️ Pincel</button><button data-tool="hand">🖐️ Mão</button><button data-tool="animal">🦬 Animal</button><button data-tool="human">🏹 Humano</button><button data-tool="spiral">🌀 Espiral</button><label>Cor <input id="paintColor" type="color" value="#9f2d19"></label><label>Traço <input id="paintSize" type="range" min="2" max="24" value="7"></label><button id="clearArt">🧽 Limpar</button></div><canvas id="artCanvas" width="1000" height="560"></canvas><div class="row"><button id="saveArt" class="primary">💾 Salvar minha arte</button><button id="completeArt" class="ghost">✓ Concluir atividade</button></div></div></div>
+<div id="celebration" class="celebration hidden"><canvas id="confetti"></canvas><div class="cele-card"><div>🏆</div><h2>Expedição concluída!</h2><p>Você visitou as galerias, registrou evidências e concluiu o trabalho de campo.</p><b id="score">0 pontos</b><div class="row"><button id="finalQuiz" class="primary">🧠 Quiz final</button><button id="keepExploring" class="ghost">Continuar explorando</button></div></div></div>
+<div id="toast"></div>
+<script src="app.js?v=9"></script>
+</body></html>

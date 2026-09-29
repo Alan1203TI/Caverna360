@@ -33,3 +33,6 @@
 #moveHint{bottom:92px;background:rgba(4,3,2,.62);font-size:10px}
 
 .hud-brand .brand-icon img{display:block;width:78px;height:auto;object-fit:contain}.hud-brand .brand-icon{font-size:0}
+
+/* v12 - hotspots clicáveis */
+.spot{z-index:30;cursor:pointer}.spot button{position:relative;z-index:3;cursor:pointer}.spot.info::before,.spot.info::after{z-index:1}.spot label{z-index:4;pointer-events:none}.spot:active button{transform:scale(.94)}

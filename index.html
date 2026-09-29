@@ -22,18 +22,22 @@
     <div class="intro-card">
       <div class="eyebrow">SESIVERSO 2026 • PRÉ-HISTÓRIA</div>
       <h1>Caverna do Tempo <span>360°</span></h1>
-      <p>Explore uma caverna imersiva, observe pinturas rupestres e toque nos pontos de descoberta para conhecer exemplos reais da Pré-História.</p>
+      <p>Explore uma grande caverna em 360°, caminhe entre galerias, observe painéis rupestres e abra hotspots para ler descrições técnicas com mini testes sobre arte rupestre, Paleolítico e Neolítico.</p>
       <div class="intro-actions">
         <button id="btnEnter" class="primary">🔥 Entrar na caverna</button>
         <button id="btnAbout" class="ghost">ℹ️ Como funciona</button>
       </div>
-      <small>Experiência educativa. O ambiente é uma reconstrução visual inspirada em sítios arqueológicos reais.</small>
+      <small>Experiência educativa em PWA pronta para GitHub Pages. O ambiente é uma reconstrução visual inspirada em sítios arqueológicos reais.</small>
     </div>
   </section>
 
   <main id="experience" class="screen">
     <header class="topbar">
-      <div class="titlebox"><strong>Caverna do Tempo 360°</strong><span id="modeLabel">Exploração livre</span></div>
+      <div class="titlebox">
+        <strong>Caverna do Tempo 360°</strong>
+        <span id="modeLabel">Exploração livre</span>
+        <small id="sceneTitle">Galeria de Entrada</small>
+      </div>
       <div class="top-actions">
         <button id="btnMission">🎯 Missão</button>
         <button id="btnTorch">🔦 Tocha</button>
@@ -46,33 +50,63 @@
 
     <div id="viewer" aria-label="Caverna pré-histórica em 360 graus">
       <div id="panoramaTrack" class="panorama-track" aria-hidden="true">
-        <img class="pano-copy" src="assets/panorama360.png" alt="">
-        <img class="pano-copy" src="assets/panorama360.png" alt="">
-        <img class="pano-copy" src="assets/panorama360.png" alt="">
+        <img class="pano-copy" src="assets/scenes/scene1_entrada.png" alt="">
+        <img class="pano-copy" src="assets/scenes/scene1_entrada.png" alt="">
+        <img class="pano-copy" src="assets/scenes/scene1_entrada.png" alt="">
       </div>
       <div id="hotspotLayer"></div>
       <div id="torch" class="torch"></div>
       <div class="vignette"></div>
-      <div id="dragHint" class="drag-hint">↔ Arraste para olhar ao redor • use a roda para aproximar</div>
+      <div id="dragHint" class="drag-hint">↔ Arraste para olhar ao redor • clique nos marcadores • use a roda para aproximar</div>
       <div class="reticle"></div>
       <div class="compass"><span id="compassNeedle">▲</span><small id="heading">0°</small></div>
+      <div id="transition" class="transition hidden"><div class="loader"></div><span id="transitionText">Indo para a próxima galeria...</span></div>
     </div>
 
     <div id="progressBar" class="progress hidden">
-      <div><strong>Missão:</strong> encontre as 6 evidências</div>
+      <div><strong>Missão:</strong> registrar as 12 evidências</div>
       <div class="progress-track"><span id="progressFill"></span></div>
-      <div id="progressText">0/6</div>
+      <div id="progressText">0/12</div>
+    </div>
+
+    <div class="scene-strip" id="sceneStrip"></div>
+
+    <div class="walk-controls" aria-label="Controles de caminhada">
+      <div class="walk-caption">CAMINHAR</div>
+      <button id="walkForward" class="walk-forward" title="Avançar para a próxima galeria">▲<span>Avançar</span></button>
+      <div class="walk-row">
+        <button id="turnLeft" title="Girar para a esquerda">↶</button>
+        <button id="walkBack" title="Voltar para a galeria anterior">▼</button>
+        <button id="turnRight" title="Girar para a direita">↷</button>
+      </div>
+      <small>W/S ou ↑/↓ para andar • A/D para girar</small>
     </div>
   </main>
 
   <aside id="panel" class="panel" aria-hidden="true">
     <button class="close" id="closePanel">×</button>
-    <div id="panelIcon" class="panel-icon">🦬</div>
-    <div id="panelPeriod" class="pill">Paleolítico</div>
-    <h2 id="panelTitle">Pintura rupestre</h2>
+    <div id="panelIcon" class="panel-icon">🖐️</div>
+    <div id="panelPeriod" class="pill">Arte rupestre</div>
+    <h2 id="panelTitle">Painel rupestre</h2>
     <p id="panelText"></p>
-    <div id="panelFacts" class="facts"></div>
+
+    <div class="tech-grid" id="techGrid"></div>
+
+    <div class="section-title">Leitura arqueológica</div>
+    <div id="panelAnalysis" class="context"></div>
+
+    <div class="section-title">Exemplo real e comparação</div>
     <div id="panelContext" class="context"></div>
+
+    <div class="section-title">Como a arqueologia analisa este vestígio</div>
+    <div id="panelMethod" class="context"></div>
+
+    <div class="section-title">Cuidados de interpretação</div>
+    <div id="panelCaution" class="context"></div>
+
+    <div class="section-title">Teste rápido</div>
+    <div id="quizArea" class="mini-quiz"></div>
+
     <button id="markFound" class="primary full">✓ Registrar descoberta</button>
   </aside>
 
@@ -83,14 +117,15 @@
     <div class="celebration-card">
       <div class="badge">🏆</div>
       <h2>Explorador da Pré-História!</h2>
-      <p>Você localizou todas as evidências da caverna.</p>
-      <div class="score" id="finalScore">600 pontos</div>
+      <p>Você registrou todas as evidências da caverna e concluiu a travessia pelas galerias.</p>
+      <div class="score" id="finalScore">1200 pontos</div>
       <button id="btnQuiz" class="primary">🧠 Fazer quiz final</button>
       <button id="btnExploreAgain" class="ghost">Continuar explorando</button>
     </div>
   </div>
+
   <div id="toast" class="toast"></div>
-  <div id="imageError" class="image-error hidden">Não foi possível carregar <b>assets/panorama360.png</b>. Confirme se a pasta <b>assets</b> está junto do index.html.</div>
+  <div id="imageError" class="image-error hidden">Não foi possível carregar as imagens da pasta <b>assets/scenes</b>. Confirme se o projeto foi extraído inteiro.</div>
 </div>
 <script src="app.js"></script>
 </body>

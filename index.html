@@ -1,13 +1,98 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#120b06"><meta name="description" content="SESIVERSO 2026 — experiência imersiva 360° sobre arte rupestre e Pré-História"><title>SESIVERSO — Caverna do Tempo 360°</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="assets/icons/icon-192.png"><link rel="apple-touch-icon" href="assets/icons/icon-192.png"><link rel="stylesheet" href="styles.css"></head><body>
-<section id="intro" class="screen show"><div class="intro-bg"></div><div class="intro-card"><div class="eyebrow">SESIVERSO 2026 • PRÉ-HISTÓRIA</div><h1>Caverna do Tempo <span>360°</span></h1><p>Entre em uma grande caverna virtual, caminhe entre galerias, investigue pinturas rupestres com fichas arqueológicas, cumpra missões e crie sua própria arte pré-histórica.</p><div class="row"><button id="enter" class="primary">🔥 Iniciar expedição</button><button id="how" class="ghost">ℹ️ Como funciona</button></div><small>Reconstrução educativa inspirada em repertórios rupestres reais. Não representa uma única caverna arqueológica.</small></div></section>
-<main id="game" class="screen"><header><div class="brand"><b>Caverna do Tempo 360°</b><small id="sceneName">1/9 • Entrada</small></div><div class="actions"><button id="missionBtn">🎯 Missão</button><button id="torchBtn">🔦 Lanterna</button><button id="soundBtn">🔊 Som</button><button id="mapBtn">🗺️ Mapa</button><button id="timelineBtn">⌛ Linha do tempo</button><button id="journalBtn">📓 Caderno</button><button id="installBtn" class="hidden">⬇ Instalar</button><button id="helpBtn">?</button></div></header>
-<div id="viewer"><div id="track"><img class="pano"><img class="pano"><img class="pano"></div><div id="hotspots"></div><div id="torch"></div><div class="vignette"></div><div id="moveHint">W/S ou ↑/↓ para caminhar • A/D ou ←/→ para olhar • arraste no celular</div><div id="transition" class="hidden"><div class="loader"></div><b id="transitionText">Avançando...</b></div></div>
-<div id="missionBox" class="mission-box"><b>🧭 Missão do Arqueólogo</b><span id="missionText">0/18 evidências • 1/9 galerias</span><div class="bar"><i id="missionFill"></i></div></div>
-<div class="walk-pad"><button data-key="w">W<br><small>avançar</small></button><button data-key="a">A</button><button data-key="s">S<br><small>voltar</small></button><button data-key="d">D</button></div>
-<div class="compass"><span id="needle">▲</span><small id="heading">0°</small></div>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#120b06">
+  <meta name="description" content="SESIVERSO 2026 — Caverna do Tempo 360°">
+  <title>Caverna do Tempo 360° — SESIVERSO</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<section id="intro" class="screen show">
+  <div class="intro-bg"></div><div class="intro-shade"></div>
+  <div class="intro-card">
+    <div class="brand-mark">✋</div>
+    <div class="eyebrow">SESIVERSO 2026 • PRÉ-HISTÓRIA</div>
+    <h1>Caverna do Tempo <span>360°</span></h1>
+    <p>Explore uma caverna virtual como em um jogo. Caminhe por nove ambientes, observe pinturas rupestres, abra fichas arqueológicas e cumpra a missão do explorador.</p>
+    <div class="row"><button id="enter" class="primary">🔥 Iniciar expedição</button><button id="how" class="ghost">ℹ️ Como funciona</button></div>
+    <small>Reconstrução educativa inspirada em repertórios arqueológicos reais.</small>
+  </div>
+</section>
+
+<main id="game" class="screen">
+  <div id="viewer">
+    <div id="track"><img class="pano"><img class="pano"><img class="pano"></div>
+    <div id="hotspots"></div><div id="torch"></div><div class="vignette"></div>
+    <div class="torch-prop" aria-hidden="true"><span class="flame">🔥</span><span class="handle"></span></div>
+    <div id="moveHint">W/S ou ↑/↓ para caminhar • A/D ou ←/→ para olhar • arraste no celular</div>
+    <div id="transition" class="hidden"><div class="loader"></div><b id="transitionText">Avançando...</b></div>
+  </div>
+
+  <div class="hud-brand">
+    <div class="brand-icon">✋</div>
+    <div><strong>CAVERNA DO TEMPO 360°</strong><small>ARTE RUPESTRE E A HISTÓRIA DA HUMANIDADE</small></div>
+  </div>
+
+  <nav class="top-menu">
+    <button id="mapBtn">🗺️ <span>Mapa</span></button>
+    <button id="journalBtn">📓 <span>Caderno</span></button>
+    <button id="timelineBtn">◷ <span>Linha do Tempo</span></button>
+    <button id="missionBtn">🏆 <span>Missões</span></button>
+    <button id="quizTopBtn">❓ <span>Quiz</span></button>
+  </nav>
+
+  <div class="top-tools">
+    <button id="torchBtn">🔥 <span>Tocha</span></button>
+    <button id="soundBtn">🔊 <span>Som</span></button>
+    <button id="installBtn" class="hidden">⬇ Instalar</button>
+    <button id="helpBtn">⚙</button>
+  </div>
+
+  <section id="leftMap" class="map-card">
+    <h2>MAPA DA CAVERNA</h2>
+    <div class="map-canvas">
+      <svg viewBox="0 0 280 345" aria-hidden="true">
+        <defs><filter id="shadow"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity=".35"/></filter></defs>
+        <path class="cave-shape" d="M75 319 C38 291 42 250 68 222 C89 199 60 177 69 145 C77 116 113 116 117 88 C120 59 89 48 107 25 C133 -8 174 14 168 50 C163 78 209 78 217 111 C224 143 190 156 179 181 C167 207 206 215 207 249 C208 279 177 283 158 307 C137 334 101 337 75 319Z"/>
+        <path class="route" d="M78 309 C64 279 72 251 92 224 C110 201 90 180 92 151 C95 125 124 116 126 90 C129 62 111 47 126 28 C145 5 173 24 163 54 C155 81 198 84 202 111 C207 139 176 153 164 179 C151 207 190 219 188 246 C187 274 158 281 143 306"/>
+      </svg>
+      <div id="mapNodes"></div>
+    </div>
+    <div class="map-progress"><b>PROGRESSO DA EXPLORAÇÃO</b><div class="progress-line"><i id="mapProgress"></i></div><div><span id="mapVisited">1/9</span><span>🪨 Evidências: <b id="mapEvidence">0/18</b></span></div></div>
+  </section>
+
+  <div id="missionBox" class="mission-box"><b>🎯 Missão atual</b><span id="missionText">Encontre todas as evidências desta galeria.</span><div class="bar"><i id="missionFill"></i></div></div>
+
+  <div class="walk-pad">
+    <button data-key="w"><b>W</b><small>avançar</small></button><button data-key="a"><b>A</b></button><button data-key="s"><b>S</b><small>voltar</small></button><button data-key="d"><b>D</b></button>
+  </div>
+  <div class="compass"><span id="needle">▲</span><small id="heading">0°</small></div>
+
+  <section class="scene-rail"><button id="prevScene" class="rail-arrow">‹</button><div id="sceneRail" class="rail-items"></div><button id="nextScene" class="rail-arrow">›</button></section>
 </main>
-<aside id="infoPanel" class="panel"><button class="x" id="closePanel">×</button><div class="panel-head"><div id="evIcon" class="ev-icon">🖐️</div><div><span id="evPeriod" class="pill">Arte rupestre</span><h2 id="evTitle">Evidência</h2></div></div><p id="evIntro"></p><div id="tech" class="tech-grid"></div><h3>Leitura arqueológica</h3><p id="evAnalysis" class="box"></p><h3>O que esta imagem ajuda a compreender?</h3><p id="evMeaning" class="box"></p><h3>Reconstrução x referência arqueológica</h3><div id="compare" class="compare"></div><div class="panel-actions"><button id="narrateBtn">🔊 Ouvir explicação</button><button id="zoomBtn">🔎 Aproximar</button></div><h3>Teste rápido</h3><div id="miniQuiz"></div><button id="registerBtn" class="primary full">Responder ao teste para registrar</button></aside>
+
+<aside id="infoPanel" class="panel">
+  <button class="x" id="closePanel">×</button>
+  <div class="panel-head"><div id="evIcon" class="ev-icon">🖐️</div><div><h2 id="evTitle">Cena arqueológica</h2><span id="evPeriod" class="pill">Arte rupestre</span></div></div>
+  <div id="panelHero" class="panel-hero"></div>
+  <p id="evIntro"></p>
+  <div id="tech" class="tech-grid"></div>
+  <h3>Descrição arqueológica</h3><p id="evAnalysis" class="box"></p>
+  <h3>O que esta imagem ajuda a compreender?</h3><p id="evMeaning" class="box"></p>
+  <h3>Reconstrução x referência real</h3><div id="compare" class="compare"></div>
+  <div class="panel-actions"><button id="narrateBtn">🔊 Ouvir explicação</button><button id="zoomBtn">🔎 Ampliar</button></div>
+  <h3>Teste rápido</h3><div id="miniQuiz"></div>
+  <button id="registerBtn" class="primary full">Responder ao teste para registrar</button>
+</aside>
+
 <div id="modal" class="modal hidden"><div class="modal-card"><button class="x" id="modalClose">×</button><div id="modalBody"></div></div></div>
-<div id="atelier" class="modal hidden"><div class="atelier-card"><button class="x" id="atelierClose">×</button><h2>🎨 Agora é sua vez de deixar uma marca</h2><p>Use pigmentos, traços e símbolos inspirados em técnicas rupestres. Sua arte fica apenas no seu aparelho.</p><div class="atelier-tools"><button data-tool="brush" class="active">✏️ Pincel</button><button data-tool="hand">🖐️ Mão</button><button data-tool="animal">🦬 Animal</button><button data-tool="human">🏹 Humano</button><button data-tool="spiral">🌀 Espiral</button><label>Cor <input id="paintColor" type="color" value="#9f2d19"></label><label>Traço <input id="paintSize" type="range" min="2" max="24" value="7"></label><button id="clearArt">🧽 Limpar</button></div><canvas id="artCanvas" width="1000" height="560"></canvas><div class="row"><button id="saveArt" class="primary">💾 Salvar minha arte</button><button id="completeArt" class="ghost">✓ Concluir atividade</button></div></div></div>
+<div id="atelier" class="modal hidden"><div class="atelier-card"><button class="x" id="atelierClose">×</button><h2>🎨 Agora é sua vez de deixar uma marca</h2><p>Use pigmentos, traços e símbolos inspirados em técnicas rupestres.</p><div class="atelier-tools"><button data-tool="brush" class="active">✏️ Pincel</button><button data-tool="hand">🖐️ Mão</button><button data-tool="animal">🦬 Animal</button><button data-tool="human">🏹 Humano</button><button data-tool="spiral">🌀 Espiral</button><label>Cor <input id="paintColor" type="color" value="#9f2d19"></label><label>Traço <input id="paintSize" type="range" min="2" max="24" value="7"></label><button id="clearArt">🧽 Limpar</button></div><canvas id="artCanvas" width="1000" height="560"></canvas><div class="row"><button id="saveArt" class="primary">💾 Salvar minha arte</button><button id="completeArt" class="ghost">✓ Concluir atividade</button></div></div></div>
 <div id="celebration" class="celebration hidden"><canvas id="confetti"></canvas><div class="cele-card"><div>🏆</div><h2>Expedição concluída!</h2><p>Você visitou as galerias, registrou evidências e concluiu o trabalho de campo.</p><b id="score">0 pontos</b><div class="row"><button id="finalQuiz" class="primary">🧠 Quiz final</button><button id="keepExploring" class="ghost">Continuar explorando</button></div></div></div>
-<div id="toast"></div><script src="app.js"></script></body></html>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body></html>

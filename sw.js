@@ -1,4 +1,4 @@
-const CACHE='sesiverso-caverna-360-v5';
+const CACHE='sesiverso-caverna-360-v6-game-ui';
 const ASSETS=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest','./assets/icons/icon-192.png','./assets/icons/icon-512.png','./assets/scenes/scene1_entrada.png','./assets/scenes/scene2_corredor.png','./assets/scenes/scene2_maos.png','./assets/scenes/scene4_passagem.png','./assets/scenes/scene3_caca.png','./assets/scenes/scene4_simbolos.png','./assets/scenes/scene6_fogo.png','./assets/scenes/scene7_neolitico.png','./assets/scenes/scene8_atelie.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim()});

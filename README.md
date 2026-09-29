@@ -1,41 +1,23 @@
-# SESIVERSO — Caverna do Tempo 360° • versão completa
+# Caverna do Tempo 360° — versão GAME UI
 
-Experiência imersiva para exposição sobre arte rupestre, Paleolítico e Neolítico.
+Esta versão foi reconstruída para reproduzir a estética da imagem-conceito criada para o projeto.
 
-## Principais recursos
-- 9 pontos/ambientes conectados em uma rota de caverna;
-- visão panorâmica 360° por arraste;
-- caminhada com W/S, setas ou controles na tela;
-- rotação com A/D ou setas laterais;
-- transição animada entre ambientes;
-- mapa interativo com galerias visitadas;
-- 18 evidências clicáveis;
-- zoom arqueológico;
-- fichas técnicas com técnica, pigmentos, suporte, análise e interpretação;
-- comparação com referências arqueológicas reais do Wikimedia Commons quando há internet;
-- narrador usando a voz do próprio navegador;
-- linha do tempo Paleolítico → Holoceno → Neolítico;
-- modo Missão do Arqueólogo;
-- caderno de campo salvo no navegador;
-- lanterna interativa;
-- som ambiente sintetizado;
-- Ateliê Rupestre final com pincel, pigmentos e carimbos;
-- exportação da arte do aluno em PNG;
-- pontuação e tela de conclusão;
-- PWA instalável e cache offline dos arquivos principais;
-- workflow para GitHub Pages.
+## Mudanças principais
+- HUD de jogo completamente novo
+- mapa em pergaminho permanente à esquerda
+- rota da caverna com posição atual, áreas visitadas e progresso
+- barra superior com Mapa, Caderno, Linha do Tempo, Missões e Quiz
+- controles de Tocha e Som no topo direito
+- painel arqueológico escuro à direita
+- hotspots circulares sobre as pinturas
+- carrossel inferior das 9 cenas com miniaturas reais dos panoramas
+- caminhada por W/S ou setas e rotação por A/D
+- navegação direta pelo mapa e pelas miniaturas
+- zoom arqueológico, narração e comparação com sítios reais
+- caderno de campo, linha do tempo, missão e ateliê rupestre
+- PWA e GitHub Pages
 
-## Testar localmente
-Abra `index.html` diretamente ou execute `iniciar-local.bat` e acesse `http://localhost:8080`.
+## Publicação no GitHub Pages
+Substitua todos os arquivos da versão anterior pelos arquivos deste pacote. O Service Worker está em uma nova versão de cache (`v6-game-ui`).
 
-## GitHub Pages
-Envie a pasta inteira para a branch `main`. O workflow em `.github/workflows/deploy-pages.yml` publica a aplicação. Em **Settings > Pages**, selecione GitHub Actions se necessário.
-
-## Atualização de versões antigas
-Como é PWA, o navegador pode manter cache anterior. Após publicar esta versão, abra o site e use `Ctrl + F5` uma vez. Se ainda aparecer versão antiga, feche a PWA e abra o endereço novamente.
-
-## Observação arqueológica
-Os ambientes 360° são reconstruções didáticas e combinam motivos inspirados em diferentes tradições, lugares e períodos. Não representam um único sítio real. As fichas deixam explícita essa distinção.
-
-## Referências fotográficas externas
-Algumas fichas tentam carregar, somente quando há internet, imagens de referência hospedadas no Wikimedia Commons e exibem sua atribuição/licença. Se estiver offline, a experiência continua funcionando e o link da fonte permanece na ficha quando aplicável.
+Depois do deploy, faça `Ctrl + F5`. Se o site já estiver instalado como PWA, feche-o completamente e abra novamente após o deploy.

@@ -1,53 +1,41 @@
-# SESIVERSO — Caverna do Tempo 360°
+# SESIVERSO — Caverna do Tempo 360° • versão completa
 
-Experiência imersiva em 360° sobre arte rupestre, Paleolítico e Neolítico.
+Experiência imersiva para exposição sobre arte rupestre, Paleolítico e Neolítico.
 
-## O que esta versão traz
-- 4 galerias panorâmicas em 360° criadas especificamente para o projeto
-- modo caminhada entre os pontos da caverna com animação de avanço/recuo
-- controles W/S ou ↑/↓ para caminhar e A/D ou ←/→ para girar
-- controles de caminhada na tela para celular/tablet
-- hotspots azuis que funcionam como passagens entre galerias
-- 12 hotspots de conteúdo com fichas técnicas ampliadas
-- cronologia, técnica, pigmentos, suporte, leitura arqueológica, metodologia e cuidados de interpretação em cada evidência
-- mini testes em cada evidência
-- missão com pontuação
-- tocha, som, quiz final
-- PWA instalável
-- funcionamento offline via Service Worker
-- pronta para GitHub Pages
-
-## Estrutura
-- `index.html` — tela principal
-- `app.js` — lógica da navegação 360° e conteúdos
-- `styles.css` — interface visual
-- `assets/scenes/` — panoramas 360°
-- `assets/icons/` — ícones do PWA
-- `manifest.webmanifest` — manifesto do PWA
-- `sw.js` — cache offline
-- `.github/workflows/deploy-pages.yml` — deploy automático no GitHub Pages
+## Principais recursos
+- 9 pontos/ambientes conectados em uma rota de caverna;
+- visão panorâmica 360° por arraste;
+- caminhada com W/S, setas ou controles na tela;
+- rotação com A/D ou setas laterais;
+- transição animada entre ambientes;
+- mapa interativo com galerias visitadas;
+- 18 evidências clicáveis;
+- zoom arqueológico;
+- fichas técnicas com técnica, pigmentos, suporte, análise e interpretação;
+- comparação com referências arqueológicas reais do Wikimedia Commons quando há internet;
+- narrador usando a voz do próprio navegador;
+- linha do tempo Paleolítico → Holoceno → Neolítico;
+- modo Missão do Arqueólogo;
+- caderno de campo salvo no navegador;
+- lanterna interativa;
+- som ambiente sintetizado;
+- Ateliê Rupestre final com pincel, pigmentos e carimbos;
+- exportação da arte do aluno em PNG;
+- pontuação e tela de conclusão;
+- PWA instalável e cache offline dos arquivos principais;
+- workflow para GitHub Pages.
 
 ## Testar localmente
-### Opção 1
-Abra `index.html` com duplo clique.
+Abra `index.html` diretamente ou execute `iniciar-local.bat` e acesse `http://localhost:8080`.
 
-### Opção 2 (recomendado)
-Execute `iniciar-local.bat` e abra:
+## GitHub Pages
+Envie a pasta inteira para a branch `main`. O workflow em `.github/workflows/deploy-pages.yml` publica a aplicação. Em **Settings > Pages**, selecione GitHub Actions se necessário.
 
-`http://localhost:8080`
+## Atualização de versões antigas
+Como é PWA, o navegador pode manter cache anterior. Após publicar esta versão, abra o site e use `Ctrl + F5` uma vez. Se ainda aparecer versão antiga, feche a PWA e abra o endereço novamente.
 
-## Publicar no GitHub Pages
-1. Crie um repositório e envie todos os arquivos.
-2. Faça push para a branch `main`.
-3. No GitHub, vá em **Settings > Pages** e confira se está usando **GitHub Actions**.
-4. Aguarde o workflow publicar o site.
+## Observação arqueológica
+Os ambientes 360° são reconstruções didáticas e combinam motivos inspirados em diferentes tradições, lugares e períodos. Não representam um único sítio real. As fichas deixam explícita essa distinção.
 
-## Instalação como PWA
-Depois de publicado em HTTPS (ou em `localhost`), o navegador mostrará a opção **Instalar**.
-
-## Observação didática
-Os cenários panorâmicos são reconstruções visuais inspiradas em repertórios rupestres reais. Os textos foram escritos com linguagem mais técnica e educativa, citando exemplos arqueológicos como:
-- Lascaux
-- Altamira
-- Cueva de las Manos
-- Serra da Capivara
+## Referências fotográficas externas
+Algumas fichas tentam carregar, somente quando há internet, imagens de referência hospedadas no Wikimedia Commons e exibem sua atribuição/licença. Se estiver offline, a experiência continua funcionando e o link da fonte permanece na ficha quando aplicável.

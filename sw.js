@@ -1,6 +1,6 @@
-const CACHE='sesiverso-caverna-360-v10-panorama-audio';
+const CACHE='sesiverso-caverna-360-v11-evidencias-highlight';
 const ASSETS=[
- './','./index.html','./styles.css?v=10','./app.js?v=10','./manifest.webmanifest',
+ './','./index.html','./styles.css?v=11','./app.js?v=11','./manifest.webmanifest',
  './assets/logo-sesi.png','./assets/icons/icon-192.png','./assets/icons/icon-512.png',
  './assets/audio/caverna-ambiente.wav',
  './assets/scenes_v10/01_entrada_nova.jpg','./assets/scenes_v10/02_corredor.jpg','./assets/scenes_v10/03_maos.jpg',

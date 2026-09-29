@@ -21,3 +21,17 @@ Esta versão foi reconstruída para reproduzir a estética da imagem-conceito cr
 Substitua todos os arquivos da versão anterior pelos arquivos deste pacote. O Service Worker está em uma nova versão de cache (`v6-game-ui`).
 
 Depois do deploy, faça `Ctrl + F5`. Se o site já estiver instalado como PWA, feche-o completamente e abra novamente após o deploy.
+
+
+## Atualização
+- fundo principal e galerias atualizados com nova imagem mais próxima da arte-conceito
+- botão e caixa de missão removidos
+
+
+## Atualização v8
+- Missões removidas da interface.
+- Menu Desenhar restaurado.
+- Ateliê não abre mais automaticamente.
+- Quiz ampliado para 12 perguntas.
+- Panorama principal substituído por versão HD 3548×1774.
+- Mapa redesenhado para acompanhar a nova caverna.

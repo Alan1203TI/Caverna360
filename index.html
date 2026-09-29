@@ -18,7 +18,7 @@
     <div class="brand-mark">✋</div>
     <div class="eyebrow">SESIVERSO 2026 • PRÉ-HISTÓRIA</div>
     <h1>Caverna do Tempo <span>360°</span></h1>
-    <p>Explore uma caverna virtual como em um jogo. Caminhe por nove ambientes, observe pinturas rupestres, abra fichas arqueológicas e cumpra a missão do explorador.</p>
+    <p>Explore uma caverna virtual como em um jogo. Caminhe por nove ambientes, observe pinturas rupestres, abra fichas arqueológicas e explore as galerias como em um jogo educativo.</p>
     <div class="row"><button id="enter" class="primary">🔥 Iniciar expedição</button><button id="how" class="ghost">ℹ️ Como funciona</button></div>
     <small>Reconstrução educativa inspirada em repertórios arqueológicos reais.</small>
   </div>
@@ -42,8 +42,8 @@
     <button id="mapBtn">🗺️ <span>Mapa</span></button>
     <button id="journalBtn">📓 <span>Caderno</span></button>
     <button id="timelineBtn">◷ <span>Linha do Tempo</span></button>
-    <button id="missionBtn">🏆 <span>Missões</span></button>
     <button id="quizTopBtn">❓ <span>Quiz</span></button>
+    <button id="drawBtn">🎨 <span>Desenhar</span></button>
   </nav>
 
   <div class="top-tools">
@@ -58,15 +58,14 @@
     <div class="map-canvas">
       <svg viewBox="0 0 280 345" aria-hidden="true">
         <defs><filter id="shadow"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity=".35"/></filter></defs>
-        <path class="cave-shape" d="M75 319 C38 291 42 250 68 222 C89 199 60 177 69 145 C77 116 113 116 117 88 C120 59 89 48 107 25 C133 -8 174 14 168 50 C163 78 209 78 217 111 C224 143 190 156 179 181 C167 207 206 215 207 249 C208 279 177 283 158 307 C137 334 101 337 75 319Z"/>
-        <path class="route" d="M78 309 C64 279 72 251 92 224 C110 201 90 180 92 151 C95 125 124 116 126 90 C129 62 111 47 126 28 C145 5 173 24 163 54 C155 81 198 84 202 111 C207 139 176 153 164 179 C151 207 190 219 188 246 C187 274 158 281 143 306"/>
+        <path class="cave-shape" d="M36 302 C30 270 44 243 62 222 C81 201 103 193 126 180 C144 170 148 152 141 132 C134 110 147 86 170 74 C190 64 211 71 226 89 C241 108 236 132 219 149 C204 164 194 182 201 202 C210 228 233 245 235 272 C237 300 215 319 187 318 C160 316 144 298 122 295 C95 292 69 324 36 302Z"/>
+        <path class="route" d="M49 291 C55 260 70 235 92 219 C112 205 137 194 150 178 C162 163 159 144 154 129 C149 111 161 94 179 88 C197 82 213 93 216 111 C219 128 206 145 194 158 C181 172 180 191 190 209 C202 230 220 248 218 270 C216 291 198 302 178 300 C157 297 143 282 124 279 C98 276 75 302 49 291"/>
       </svg>
       <div id="mapNodes"></div>
     </div>
     <div class="map-progress"><b>PROGRESSO DA EXPLORAÇÃO</b><div class="progress-line"><i id="mapProgress"></i></div><div><span id="mapVisited">1/9</span><span>🪨 Evidências: <b id="mapEvidence">0/18</b></span></div></div>
   </section>
 
-  <div id="missionBox" class="mission-box"><b>🎯 Missão atual</b><span id="missionText">Encontre todas as evidências desta galeria.</span><div class="bar"><i id="missionFill"></i></div></div>
 
   <div class="walk-pad">
     <button data-key="w"><b>W</b><small>avançar</small></button><button data-key="a"><b>A</b></button><button data-key="s"><b>S</b><small>voltar</small></button><button data-key="d"><b>D</b></button>

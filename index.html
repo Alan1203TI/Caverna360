@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#120b06">
+  <meta name="description" content="Experiência imersiva 360° do SESIVERSO sobre arte rupestre, Paleolítico e Neolítico.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Caverna 360">
+  <title>SESIVERSO — Caverna do Tempo 360°</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <section id="intro" class="screen show">
+    <div class="intro-photo"></div>
+    <div class="intro-shade"></div>
+    <div class="intro-card">
+      <div class="eyebrow">SESIVERSO 2026 • PRÉ-HISTÓRIA</div>
+      <h1>Caverna do Tempo <span>360°</span></h1>
+      <p>Explore uma caverna imersiva, observe pinturas rupestres e toque nos pontos de descoberta para conhecer exemplos reais da Pré-História.</p>
+      <div class="intro-actions">
+        <button id="btnEnter" class="primary">🔥 Entrar na caverna</button>
+        <button id="btnAbout" class="ghost">ℹ️ Como funciona</button>
+      </div>
+      <small>Experiência educativa. O ambiente é uma reconstrução visual inspirada em sítios arqueológicos reais.</small>
+    </div>
+  </section>
+
+  <main id="experience" class="screen">
+    <header class="topbar">
+      <div class="titlebox"><strong>Caverna do Tempo 360°</strong><span id="modeLabel">Exploração livre</span></div>
+      <div class="top-actions">
+        <button id="btnMission">🎯 Missão</button>
+        <button id="btnTorch">🔦 Tocha</button>
+        <button id="btnSound">🔊 Som</button>
+        <button id="btnInstall" class="hidden">⬇ Instalar</button>
+        <button id="btnReset" aria-label="Centralizar">⌂</button>
+        <button id="btnInfo" aria-label="Informações">?</button>
+      </div>
+    </header>
+
+    <div id="viewer" aria-label="Caverna pré-histórica em 360 graus">
+      <div id="panoramaTrack" class="panorama-track" aria-hidden="true">
+        <img class="pano-copy" src="assets/panorama360.png" alt="">
+        <img class="pano-copy" src="assets/panorama360.png" alt="">
+        <img class="pano-copy" src="assets/panorama360.png" alt="">
+      </div>
+      <div id="hotspotLayer"></div>
+      <div id="torch" class="torch"></div>
+      <div class="vignette"></div>
+      <div id="dragHint" class="drag-hint">↔ Arraste para olhar ao redor • use a roda para aproximar</div>
+      <div class="reticle"></div>
+      <div class="compass"><span id="compassNeedle">▲</span><small id="heading">0°</small></div>
+    </div>
+
+    <div id="progressBar" class="progress hidden">
+      <div><strong>Missão:</strong> encontre as 6 evidências</div>
+      <div class="progress-track"><span id="progressFill"></span></div>
+      <div id="progressText">0/6</div>
+    </div>
+  </main>
+
+  <aside id="panel" class="panel" aria-hidden="true">
+    <button class="close" id="closePanel">×</button>
+    <div id="panelIcon" class="panel-icon">🦬</div>
+    <div id="panelPeriod" class="pill">Paleolítico</div>
+    <h2 id="panelTitle">Pintura rupestre</h2>
+    <p id="panelText"></p>
+    <div id="panelFacts" class="facts"></div>
+    <div id="panelContext" class="context"></div>
+    <button id="markFound" class="primary full">✓ Registrar descoberta</button>
+  </aside>
+
+  <div id="modal" class="modal hidden"><div class="modal-card"><button class="close" id="closeModal">×</button><div id="modalContent"></div></div></div>
+
+  <div id="celebration" class="celebration hidden">
+    <canvas id="confetti"></canvas>
+    <div class="celebration-card">
+      <div class="badge">🏆</div>
+      <h2>Explorador da Pré-História!</h2>
+      <p>Você localizou todas as evidências da caverna.</p>
+      <div class="score" id="finalScore">600 pontos</div>
+      <button id="btnQuiz" class="primary">🧠 Fazer quiz final</button>
+      <button id="btnExploreAgain" class="ghost">Continuar explorando</button>
+    </div>
+  </div>
+  <div id="toast" class="toast"></div>
+  <div id="imageError" class="image-error hidden">Não foi possível carregar <b>assets/panorama360.png</b>. Confirme se a pasta <b>assets</b> está junto do index.html.</div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
